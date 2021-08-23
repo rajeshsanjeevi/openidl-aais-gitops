@@ -114,6 +114,7 @@ resource "aws_iam_group" "eks_admin_group" {
   name = "${local.std_name}-eks-admin"
   depends_on = [aws_iam_policy.eks_admin_group_assume_policy, aws_iam_policy.eks_admin_group_assume_policy, aws_iam_role.eks_admin_role ]
  }
+/*
 #iam group eks-admin group and its related policy attachment
 resource "aws_iam_group_policy_attachment" "eks_admin_group_policy_attachment" {
   group = aws_iam_group.eks_admin_group.name
@@ -140,7 +141,7 @@ resource "aws_iam_policy" "eks_admin_group_assume_policy" {
   
  }
 
-
+*/
 
 
 
