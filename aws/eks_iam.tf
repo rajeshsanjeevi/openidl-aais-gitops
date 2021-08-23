@@ -112,13 +112,14 @@ resource "aws_iam_role" "eks_admin_role" {
 #iam group that allows users to assume eks-admin-role
 resource "aws_iam_group" "eks_admin_group" {
   name = "${local.std_name}-eks-admin"
-  depends_on = [aws_iam_policy.eks_admin_group_assume_policy, aws_iam_policy.eks_admin_group_assume_policy, aws_iam_role.eks_admin_role ]
+  
  }
-/*
+
 #iam group eks-admin group and its related policy attachment
 resource "aws_iam_group_policy_attachment" "eks_admin_group_policy_attachment" {
   group = aws_iam_group.eks_admin_group.name
   policy_arn = aws_iam_policy.eks_admin_group_assume_policy.arn
+  depends_on = [aws_iam_policy.eks_admin_group_assume_policy, aws_iam_group.eks_admin_group]
   
 }
 #iam policy for eks admin role
@@ -138,10 +139,10 @@ resource "aws_iam_policy" "eks_admin_group_assume_policy" {
     Name = "${local.std_name}-eks-admin-group-assume",
     Cluster_type = "both"
   })
-  
+  depends_on = [aws_iam_role.eks_admin_role]
  }
 
-*/
+
 
 
 
