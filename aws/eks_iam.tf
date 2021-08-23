@@ -137,6 +137,7 @@ resource "aws_iam_policy" "eks_admin_group_assume_policy" {
     Name = "${local.std_name}-eks-admin-group-assume",
     Cluster_type = "both"
   })
+  depends_on = [aws_iam_group.eks_admin_group, aws_iam_group_policy_attachment.eks_admin_group_policy_attachment]
 }
 
 
