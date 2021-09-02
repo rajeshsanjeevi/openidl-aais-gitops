@@ -1,15 +1,15 @@
 #The below config declaration is applicable when using remote backend as S3 in terraform
-bucket               = "carr2-node-terraform-state-mgmt"
+bucket               = ""
 key                  = "terraform.tfstate"
 region               = "us-west-1"
 encrypt              = true
 workspace_key_prefix = "environment"
 ##################reference example: https://dynamodb.us-east-1.amazonaws.com#################
 dynamodb_endpoint    = "https://dynamodb.us-west-1.amazonaws.com"
-dynamodb_table       = "carr2-node-terraform-state-lock"
-role_arn             = "arn:aws:iam::577645632856:role/carr2-tf-automation"
+dynamodb_table       = ""
+role_arn             = ""
 session_name         = "terraform-session"
-external_id          = "carr2-terraform" #external id setup during IAM user and role setup for access
+external_id          = "" #external id setup during IAM user and role setup for access
 
 
 
