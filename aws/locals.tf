@@ -18,6 +18,19 @@ locals {
     "stateCode",
     "stateName",
     "organizationId"]
+  #application cluster (eks) config-map (aws auth) - iam user to map
+  app_cluster_map_users = [{
+    userarn = aws_iam_user.baf_automation.arn
+    username = "admin"
+    groups = ["system:masters"]
+  }]
+
+  #application cluster (eks) config-map (aws auth) - iam user to map
+  blk_cluster_map_users = [{
+    userarn = aws_iam_user.baf_automation.arn
+    username = "admin"
+    groups = ["system:masters"]
+  }]
   #application cluster (eks) config-map (aws auth) - iam roles to map
   app_cluster_map_roles = [
     {
