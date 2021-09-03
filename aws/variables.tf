@@ -632,4 +632,8 @@ variable "s3_bucket_name_cloudtrail" {
   type        = string
   description = "The name of s3 bucket to store the cloudtrail logs"
 }
-
+variable "org_name" {
+  type = string
+  description = "The short name of the carrier node"
+  default = ""
+}

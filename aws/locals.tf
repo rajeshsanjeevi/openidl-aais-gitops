@@ -1,6 +1,6 @@
 ##local variables and their manipulation are here
 locals {
-  std_name          = "${var.node_type}-${var.aws_env}"
+  std_name          = var.org_name == "" || var.org_name == "aais" || var.org_name == "anlt" ? "${var.node_type}-${var.aws_env}" : "${var.node_type}-${substr(var.org_name,0,4)}-${var.aws_env}"
   app_cluster_name  = "${local.std_name}-${var.app_cluster_name}"
   blk_cluster_name  = "${local.std_name}-${var.blk_cluster_name}"
   policy_arn_prefix = "arn:aws:iam::aws:policy"
@@ -157,9 +157,4 @@ locals {
     to_port     = "8443"
     protocol    = "tcp"
   }]
-  node_type = {
-    aais = "aais"
-    carr = "carrier"
-    anlt = "analytics"
-  }
 }
