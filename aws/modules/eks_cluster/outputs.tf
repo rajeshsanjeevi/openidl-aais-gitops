@@ -210,10 +210,10 @@ output "security_group_rule_cluster_https_worker_ingress" {
   value       = aws_security_group_rule.cluster_https_worker_ingress
 }
 output "aws_eks_cluster" {
-  value      = data.aws_eks_cluster.this
+  value      = var.create_eks ? data.aws_eks_cluster.this : null
   depends_on = [aws_eks_cluster.this, time_sleep.wait]
 }
 output "aws_eks_cluster_auth" {
-  value      = data.aws_eks_cluster_auth.this
+  value      = var.create_eks ? data.aws_eks_cluster_auth.this : null
   depends_on = [aws_eks_cluster.this, time_sleep.wait]
 }
