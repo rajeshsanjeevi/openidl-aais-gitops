@@ -99,10 +99,12 @@ data "http" "wait_for_cluster" {
   ]
 }
 data "aws_eks_cluster" "this" {
+  count          = var.create_eks ? 1 : 0
   name       = aws_eks_cluster.this[0].name
   depends_on = [aws_eks_cluster.this, time_sleep.wait]
 }
 data "aws_eks_cluster_auth" "this" {
+  count          = var.create_eks ? 1 : 0
   name       = aws_eks_cluster.this[0].name
   depends_on = [aws_eks_cluster.this, time_sleep.wait]
 }
